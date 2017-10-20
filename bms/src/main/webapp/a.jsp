@@ -7,17 +7,18 @@
     <title>Insert title here</title>
     <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
     <script>
-        function login() {
-            $("#form1").submit();
+        var ipPort = "";
+        function getVerifyCode() {
+            $.ajax({
+                url:ipPort + "nlost/ajax.html?" + "svc=core/getVerifyCode",
+                type:"POST",
+                data:{
+                    params:"{\"email\":\"chenxiangming@gigaiot.com\", \"userName\":\"xiao44\"}"
+                },
+            });
         }
     </script>
 </head>
-<button onclick="getVerifyCode()">发送验证码</button><br>
-
-<form id="form1" action="/login" method="post">
-用户:<input type="text"  name="userName" />
-密码:<input type="password"  name="password">
-     <button id="button1" onclick="login()">login</button>
-</form>
+<button onclick="getVerifyCode()">发送验证码aaaaaaa</button>
 </body>
 </html>
