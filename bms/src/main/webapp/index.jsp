@@ -10,14 +10,21 @@
         function login() {
             $("#form1").submit();
         }
+        function toRegister() {
+            window.location.href = "/toRegister";
+        }
     </script>
 </head>
 <button onclick="getVerifyCode()">发送验证码</button><br>
 
 <form id="form1" action="/login" method="post">
-用户:<input type="text"  name="userName" />
-密码:<input type="password"  name="password">
-     <button id="button1" onclick="login()">login</button>
+    <table>
+        <tr> <td>用户:</td> <td><input type="text"  name="userName" /></td> </tr>
+        <tr> <td>密码:</td> <td><input type="password"  name="password"></td> </tr>
+        <tr> <td><button id="button1" type="button" onclick="login()">login</button></td>
+             <td><button id="button2" type="button" onclick="toRegister()">register</button></td> </tr>
+    </table>
+
 </form>
 </body>
 </html>

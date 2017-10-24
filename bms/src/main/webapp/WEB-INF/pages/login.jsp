@@ -19,6 +19,9 @@
         }
     </script>
 </head>
+<body>
+
 <button onclick="getVerifyCode()">login</button>
+
 </body>
 </html>

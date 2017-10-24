@@ -2,16 +2,14 @@ package com.afei.bms.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by cxm on 2017/10/13.
  */
 @Data
-@Entity(name = "t_user")
+@Entity
+@Table(name="t_user")
 public class User {
 
     @Id

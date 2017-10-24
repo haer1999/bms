@@ -22,9 +22,10 @@ public class TestSpring {
         user.setName("xiao11");
         user.setPassword("xiao11");
         user.setSystem(false);
-        userService.save(user);
+//        userService.save(user);
         log.info("addUser Success");
         log.info("i am happy");
 
     }
+
 }
