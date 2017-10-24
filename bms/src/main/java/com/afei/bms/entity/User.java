@@ -8,7 +8,8 @@ import javax.persistence.*;
  * Created by cxm on 2017/10/13.
  */
 @Data
-@Entity(name = "t_user")
+@Entity
+@Table(name="t_user")
 public class User {
 
     @Id

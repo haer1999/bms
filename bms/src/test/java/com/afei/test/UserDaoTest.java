@@ -16,13 +16,17 @@ public class UserDaoTest {
     public void save() throws Exception {
     }
 
-//    @Test
-//    public void findByName() throws Exception {
-//        ApplicationContext ac = new ClassPathXmlApplicationContext(new String[]{"classpath:spring.xml","classpath:spring-hibernate.xml"});
-//        UserDao userDao = ac.getBean(UserDao.class);
-//        User user = userDao.findByName("xiao11");
-//        System.out.println(user.toString());
-//
-//    }
+    @Test
+    public void findByName() throws Exception {
+        ApplicationContext ac = new ClassPathXmlApplicationContext(new String[]{"classpath:spring.xml","classpath:spring-hibernate.xml"});
+        UserDao userDao = ac.getBean(UserDao.class);
+        User user = userDao.findByName("xiao11", "xiao11ps");
+        if(user!=null){
+        	System.out.println(user.toString());
+        }else{
+        	System.out.println("it is null");
+        }
+        
+    }
 
 }
