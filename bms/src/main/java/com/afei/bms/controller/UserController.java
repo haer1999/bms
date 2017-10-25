@@ -1,6 +1,7 @@
 package com.afei.bms.controller;
 
 import com.afei.bms.dto.BmsDto;
+import com.afei.bms.dto.UserSession;
 import com.afei.bms.entity.User;
 import com.afei.bms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by cxm on 2017/10/19.
@@ -34,19 +36,28 @@ public class UserController {
     @RequestMapping(value = "/toRegister", method = RequestMethod.GET)
     public ModelAndView  toRegister() {
         ModelAndView modelAndView = new ModelAndView("register");
-        System.out.println("toRegister");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
-    public String register(String userName, String password) {
+    public String register(HttpServletRequest req, String userName, String password) {
+        User user = userService.save(userName, password);
+        if (user != null) {
+            HttpSession session = req.getSession();
+            UserSession userSession = new UserSession();
+            userSession.setUserId(user.getId());
+            userSession.setUserName(user.getName());
+            session.setAttribute("user", userSession);
+            return BmsDto.SUCCESS;
+        }else {
+            return BmsDto.INVALID_USERNAME;
+        }
+    }
 
-//        User user = new User();
-//        user.setName(userName);
-//        user.setPassword(password);
-//        userService.save(user);
-        return BmsDto.SUCCESS;
+    @RequestMapping(value = "/toMain", method = RequestMethod.GET)
+    public String toMain() {
+        return "main";
     }
 
 }

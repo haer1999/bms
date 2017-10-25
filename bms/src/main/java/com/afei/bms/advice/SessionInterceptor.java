@@ -15,9 +15,9 @@ public class SessionInterceptor implements HandlerInterceptor {
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object handler) throws Exception {
+        System.out.println("进入拦截器了");
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("user") != null) {
-        	System.out.println("test");
             return true;
         }
         request.getRequestDispatcher("/index.jsp").forward(request, response);

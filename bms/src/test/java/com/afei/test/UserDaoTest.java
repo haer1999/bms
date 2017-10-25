@@ -20,7 +20,7 @@ public class UserDaoTest {
     public void findByName() throws Exception {
         ApplicationContext ac = new ClassPathXmlApplicationContext(new String[]{"classpath:spring.xml","classpath:spring-hibernate.xml"});
         UserDao userDao = ac.getBean(UserDao.class);
-        User user = userDao.findByName("xiao11", "xiao11ps");
+        User user = userDao.findByName("xiao11");
         if(user!=null){
         	System.out.println(user.toString());
         }else{
