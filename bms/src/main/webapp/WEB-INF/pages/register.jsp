@@ -8,7 +8,32 @@
     <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
     <script>
         function register() {
-            window.location.href = "/register";
+            debugger;
+            var userName = $("#userName").val();
+            var psd = $("#psd").val();
+            var confirmPsd = $("#confirmPsd").val();
+            if(psd==confirmPsd) {
+                $.ajax({
+                    url:"/register",
+                    type:"POST",
+                    data:{
+                        "userName":userName,
+                        "password":psd,
+                    },
+                    success:function (result) {
+
+                        debugger;
+                        if(JSON.parse(result).success){
+                            alert("true");
+                            window.location.href="/toMain";
+                        }else{
+                            alert("server error");
+                        }
+                    }
+                });
+            }else {
+                alert("password inconsistency");
+            }
         }
     </script>
 </head>
@@ -16,9 +41,9 @@
 
 <form>
     <table>
-        <tr>  <td>用户名：</td>  <td><input type="text"  name="userName" /></td> </tr>
-        <tr>  <td>密码：</td>    <td><input type="password"  name="password"></td></tr>
-        <tr>  <td>确认密码</td>  <td><input type="password"  name="password"></td></tr>
+        <tr>  <td>用户名：</td>  <td><input type="text" id="userName" name="userName" /></td> </tr>
+        <tr>  <td>密码：</td>    <td><input type="password" id="psd"  name="password"></td></tr>
+        <tr>  <td>确认密码</td>  <td><input type="password" id="confirmPsd" name="confirmPassword"></td></tr>
         <tr>  <td><button id="button1" onclick="register()">register</button></td>
     </table>
 </form>

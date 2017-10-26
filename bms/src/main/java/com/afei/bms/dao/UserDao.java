@@ -20,17 +20,18 @@ public class UserDao {
 
     @Autowired
     private SessionFactory sessionFactory;
-//
-//    public void save(User user) {
-//        Serializable serializable = sessionFactory.getCurrentSession().save(user);
-//        System.out.println(serializable);
-//    }
+
+    @Transactional
+    public void save(User user) {
+        Serializable serializable = sessionFactory.getCurrentSession().save(user);
+        System.out.println(serializable);
+    }
 
 
     @Transactional(readOnly = true)
-    public User findByName(String name, String password) {
-        List<User> userList = sessionFactory.getCurrentSession().createQuery("from User where name=? and password=?")
-                .setParameter(0, name).setParameter(1, password).list();
+    public User findByName(String name) {
+        List<User> userList = sessionFactory.getCurrentSession().createQuery("from User where name=?")
+                .setParameter(0, name).list();
         if (userList != null & userList.size() > 0) {
             return userList.get(0);
         } else {

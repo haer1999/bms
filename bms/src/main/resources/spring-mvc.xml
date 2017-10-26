@@ -33,6 +33,7 @@
             <mvc:mapping path="/**"/>
             <mvc:exclude-mapping path="/login"/>
             <mvc:exclude-mapping path="/toRegister"/>
+            <mvc:exclude-mapping path="/register"/>
             <bean class="com.afei.bms.advice.SessionInterceptor"></bean>
         </mvc:interceptor>
     </mvc:interceptors>
