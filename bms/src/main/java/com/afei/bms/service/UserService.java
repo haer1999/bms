@@ -19,6 +19,16 @@ public class UserService{
 
     }
 
+    public User login(String userName, String password) {
+        User user = userDao.findByNameAndPassword(userName, password);
+        return user;
+    }
+
+    public User adminLogin(String userName, String password) {
+        User user = userDao.findAdminByNameAndPassword(userName, password);
+        return user;
+    }
+
     public User save(String userName, String password) {
         User user = userDao.findByName(userName);
         if (user != null) {

@@ -24,9 +24,8 @@ public class UserDao {
     @Transactional
     public void save(User user) {
         Serializable serializable = sessionFactory.getCurrentSession().save(user);
-        System.out.println(serializable);
+        System.out.println("what happeng"+serializable);
     }
-
 
     @Transactional(readOnly = true)
     public User findByName(String name) {
@@ -37,6 +36,20 @@ public class UserDao {
         } else {
             return null;
         }
+    }
+
+    @Transactional(readOnly = true)
+    public User findByNameAndPassword(String name, String password) {
+        User user = (User)sessionFactory.getCurrentSession().createQuery("from User where name =? and password = ?")
+                .setParameter(0, name).setParameter(1, password).uniqueResult();
+        return user;
+    }
+
+    @Transactional(readOnly = true)
+    public User findAdminByNameAndPassword(String name, String password) {
+        User user = (User)sessionFactory.getCurrentSession().createQuery("from User where name =? and password = ? and system = true")
+                .setParameter(0, name).setParameter(1, password).uniqueResult();
+        return user;
     }
 
 
