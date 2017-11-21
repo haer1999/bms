@@ -19,6 +19,11 @@
         <th field="email" width="50">Email</th>
     </tr>
     </thead>
+    <tbody>
+    <tr>
+        <td>mick</td><td>jackson</td><td>1234</td><td>123@qq.com</td>
+    </tr>
+    </tbody>
 </table>
 <div id="toolbar">
     <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">New User</a>

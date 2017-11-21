@@ -29,6 +29,11 @@ public class AdminController {
         return "/admin/login";
     }
 
+    @RequestMapping(value = "/toMain",method = RequestMethod.GET)
+    public String toAdminMain() {
+        return "/admin/main";
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public String login(HttpServletRequest req, String userName, String password) {

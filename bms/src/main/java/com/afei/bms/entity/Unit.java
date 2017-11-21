@@ -24,3 +24,4 @@ public class Unit {
     private Long publishTime;
     private String serialNum;
 }
+
