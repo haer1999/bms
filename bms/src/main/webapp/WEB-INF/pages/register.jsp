@@ -21,11 +21,11 @@
                         "password":psd,
                     },
                     success:function (result) {
-
                         debugger;
                         if(JSON.parse(result).success){
                             alert("true");
-                            window.location.href="/toMain";
+                            var req = "http://" + window.location.host + "/toMain";
+                            window.location.replace(req);
                         }else{
                             alert("server error");
                         }
@@ -39,14 +39,14 @@
 </head>
 <body>
 
-<form>
+<%--<form>--%>
     <table>
         <tr>  <td>用户名：</td>  <td><input type="text" id="userName" name="userName" /></td> </tr>
         <tr>  <td>密码：</td>    <td><input type="password" id="psd"  name="password"></td></tr>
         <tr>  <td>确认密码</td>  <td><input type="password" id="confirmPsd" name="confirmPassword"></td></tr>
         <tr>  <td><button id="button1" onclick="register()">register</button></td>
     </table>
-</form>
+<%--</form>--%>
 
 
 </body>

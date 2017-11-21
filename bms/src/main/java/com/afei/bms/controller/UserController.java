@@ -24,14 +24,21 @@ public class UserController {
     UserService userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView  login(String userName, String password) {
-        ModelAndView modelAndView = new ModelAndView("a");
-
-        System.out.println(userName);
-        System.out.println(password);
-        System.out.println("login1");
-        return modelAndView;
+    @ResponseBody
+    public String  login(HttpServletRequest req, String userName, String password) {
+        User user = userService.login(userName, password);
+        if (user != null) {
+            HttpSession session = req.getSession();
+            UserSession us = new UserSession();
+            us.setUserId(user.getId());
+            us.setUserName(user.getName());
+            session.setAttribute("user", us);
+        }else{
+            return BmsDto.WRONG_USER_PASSWORD;
+        }
+        return BmsDto.SUCCESS;
     }
+
 
     @RequestMapping(value = "/toRegister", method = RequestMethod.GET)
     public ModelAndView  toRegister() {
