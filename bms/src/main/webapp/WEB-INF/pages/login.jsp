@@ -7,7 +7,7 @@
     <title>Insert title here</title>
     <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
     <script>
-        var ipPort = "";
+        var ipPort = "/admin/";
         function getVerifyCode() {
             $.ajax({
                 url:ipPort + "nlost/ajax.html?" + "svc=core/getVerifyCode",

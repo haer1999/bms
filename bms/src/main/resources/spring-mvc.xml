@@ -16,8 +16,7 @@
     <!-- 扫包 -->
     <context:component-scan base-package="com.afei.bms.controller"></context:component-scan>
     <!-- 静态资源过滤 -->
-    <mvc:resources location="jquery-easyui-1.4.1/" mapping="/jquery-easyui-1.4.1/**"/>
-    <!--<mvc:default-servlet-handler />-->
+    <!--<mvc:resources location="jquery-easyui-1.4.1/" mapping="/jquery-easyui-1.4.1/**"/>-->
 
 
     <!-- 视图渲染 jsp/freemaker/velocity-->
@@ -31,11 +30,11 @@
     <mvc:interceptors>
         <!-- 多个拦截器，顺序执行 -->
         <mvc:interceptor>
-            <mvc:mapping path="/"/>
+            <mvc:mapping path="/**"/>
             <mvc:exclude-mapping path="/login"/>
             <mvc:exclude-mapping path="/toRegister"/>
             <mvc:exclude-mapping path="/register"/>
-            <mvc:exclude-mapping path="/admin"/>
+            <mvc:exclude-mapping path="/admin/index"/>
             <mvc:exclude-mapping path="/admin/login"/>
             <bean class="com.afei.bms.advice.SessionInterceptor"></bean>
         </mvc:interceptor>

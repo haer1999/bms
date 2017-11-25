@@ -5,9 +5,22 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Insert title here</title>
-    <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/jquery-easyui-1.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function userManage() {
+            alert("hello");
+            $.ajax({
+                url:"/admin/"
+            });
+        }
+    </script>
 </head>
 <body>
     <p>hello, ${sessionScope.user.userName}</p>
+    <p>unit管理</p>
+    <p id="userManage" onclick="userManage()">用户管理</p>
+    <div id="content">
+
+    </div>
 </body>
 </html>

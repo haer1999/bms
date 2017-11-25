@@ -22,6 +22,6 @@ public class Unit {
     private String author;
     private String publisher;
     private Long publishTime;
-    private String serialNum;
+    private String serialNum;   //书籍编号，可以用于排列图书
 }
 
